@@ -18,6 +18,6 @@
 </head>
 <body>
   <div id="app"></div>
-<h1>{{ config('app.mykey') }}</h1>
+<a href="{{ config('app.mykey') }}">ここに飛ぶ</a>
 </body>
 </html>
