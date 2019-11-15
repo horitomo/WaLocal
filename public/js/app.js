@@ -1970,6 +1970,11 @@ __webpack_require__.r(__webpack_exports__);
       }
     };
   },
+  computed: {
+    isLogin: function isLogin() {
+      return this.$store.getters['auth/check'];
+    }
+  },
   methods: {
     route: function route() {
       console.log(this.routeForm);
@@ -3646,71 +3651,73 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "panel" }, [
-    _c(
-      "form",
-      {
-        staticClass: "form",
-        on: {
-          submit: function($event) {
-            $event.preventDefault()
-            return _vm.route($event)
-          }
-        }
-      },
-      [
-        _c("label", { attrs: { for: "departure" } }, [_vm._v("出発地")]),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.routeForm.departure,
-              expression: "routeForm.departure"
-            }
-          ],
-          staticClass: "form__item",
-          attrs: { type: "text", id: "departure" },
-          domProps: { value: _vm.routeForm.departure },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+  return _vm.isLogin
+    ? _c("div", { staticClass: "panel" }, [
+        _c(
+          "form",
+          {
+            staticClass: "form",
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                return _vm.route($event)
               }
-              _vm.$set(_vm.routeForm, "departure", $event.target.value)
             }
-          }
-        }),
-        _vm._v(" "),
-        _c("label", { attrs: { for: "arrival" } }, [_vm._v("到着地")]),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.routeForm.arrival,
-              expression: "routeForm.arrival"
-            }
-          ],
-          staticClass: "form__item",
-          attrs: { type: "text", id: "arrival" },
-          domProps: { value: _vm.routeForm.arrival },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+          },
+          [
+            _c("label", { attrs: { for: "departure" } }, [_vm._v("出発地")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.routeForm.departure,
+                  expression: "routeForm.departure"
+                }
+              ],
+              staticClass: "form__item",
+              attrs: { type: "text", id: "departure" },
+              domProps: { value: _vm.routeForm.departure },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.routeForm, "departure", $event.target.value)
+                }
               }
-              _vm.$set(_vm.routeForm, "arrival", $event.target.value)
-            }
-          }
-        }),
-        _vm._v(" "),
-        _vm._m(0)
-      ]
-    )
-  ])
+            }),
+            _vm._v(" "),
+            _c("label", { attrs: { for: "arrival" } }, [_vm._v("到着地")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.routeForm.arrival,
+                  expression: "routeForm.arrival"
+                }
+              ],
+              staticClass: "form__item",
+              attrs: { type: "text", id: "arrival" },
+              domProps: { value: _vm.routeForm.arrival },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.routeForm, "arrival", $event.target.value)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _vm._m(0)
+          ]
+        )
+      ])
+    : _vm._e()
 }
 var staticRenderFns = [
   function() {
