@@ -18,5 +18,6 @@
 </head>
 <body>
   <div id="app"></div>
+<h1>{{ config('app.mykey') }}</h1>
 </body>
 </html>
