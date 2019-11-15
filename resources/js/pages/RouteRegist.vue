@@ -1,5 +1,5 @@
 <template>
-  <div class="panel">
+  <div class="panel" v-if="isLogin">
     <form class="form" @submit.prevent="route">
       <label for="departure">出発地</label>
       <input type="text" class="form__item" id="departure"  v-model="routeForm.departure">
@@ -22,6 +22,11 @@ export default {
       }
     }
   },
+  computed: {
+		isLogin () {
+			return this.$store.getters['auth/check']
+		}
+	},
   methods :{
     route(){
       console.log(this.routeForm)
