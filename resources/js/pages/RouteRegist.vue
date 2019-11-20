@@ -9,10 +9,12 @@
         <button type="submit" class="button button--inverse">検索</button>
       </div>
     </form>
+    <Googlemap />
   </div>
 </template>
 
 <script>
+import Googlemap from '../components/Googlemap.vue';
 export default {
   data() {
     return {
@@ -31,6 +33,9 @@ export default {
     route(){
       console.log(this.routeForm)
     }
-  }
+  },
+  components: {
+		Googlemap
+	}
 }
 </script>
