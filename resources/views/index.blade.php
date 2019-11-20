@@ -18,9 +18,5 @@
 </head>
 <body>
   <div id="app"></div>
-  {{-- <a href="{{ config('app.mykey') }}">ここに飛ぶ</a> --}}
-  {{-- <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key={{ config('app.mykey') }}&callback=initMap">
-  </script> --}}
 </body>
 </html>
