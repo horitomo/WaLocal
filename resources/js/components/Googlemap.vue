@@ -33,9 +33,11 @@ export default {
         });
 
         var request = {
-        origin: new google.maps.LatLng(35.681382,139.766084), // 出発地
-        // origin: from,
-        destination: this.mapPosition, // 目的地
+        //origin: new google.maps.LatLng(35.681382,139.766084), // 出発地
+        //origin: this.data.routeForm.arrival,
+        origin : this.$store.getters['file/arrival'],
+        //destination: this.mapPosition, // 目的地
+        destination: this.$store.getters['file/departure'],
 //        waypoints:wayPoints,
         travelMode: google.maps.DirectionsTravelMode.WALKING, // 交通手段(歩行。DRIVINGの場合は車)
         };
