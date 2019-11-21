@@ -1835,11 +1835,11 @@ var GOOGLEMAP_API_KEY = "aaa";
 
       });
       var request = {
-        origin: new google.maps.LatLng(35.681382, 139.766084),
-        // 出発地
-        // origin: from,
-        destination: this.mapPosition,
-        // 目的地
+        //origin: new google.maps.LatLng(35.681382,139.766084), // 出発地
+        //origin: this.data.routeForm.arrival,
+        origin: this.$store.getters['file/arrival'],
+        //destination: this.mapPosition, // 目的地
+        destination: this.$store.getters['file/departure'],
         //        waypoints:wayPoints,
         travelMode: google.maps.DirectionsTravelMode.WALKING // 交通手段(歩行。DRIVINGの場合は車)
 
@@ -2026,7 +2026,15 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_Googlemap_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/Googlemap.vue */ "./resources/js/components/Googlemap.vue");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_Googlemap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Googlemap */ "./resources/js/components/Googlemap.vue");
+
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2055,15 +2063,40 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     isLogin: function isLogin() {
       return this.$store.getters['auth/check'];
+    },
+    arrival: function arrival() {
+      return this.$store.getters['file/arrival'];
+    },
+    departure: function departure() {
+      return this.$store.getters['file/departure'];
+    },
+    isCheck: function isCheck() {
+      if (this.$store.getters['file/checkA'] && this.$store.getters['file/checkD']) {
+        return true;
+      } else {
+        return false;
+      }
     }
   },
   methods: {
     route: function route() {
-      console.log(this.routeForm);
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function route$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(this.$store.dispatch('file/register', this.routeForm));
+
+            case 2:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, null, this);
     }
   },
   components: {
-    Googlemap: _components_Googlemap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+    Googlemap: _components_Googlemap__WEBPACK_IMPORTED_MODULE_1__["default"]
   }
 });
 
@@ -3761,78 +3794,86 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _vm.isLogin
-    ? _c(
-        "div",
-        { staticClass: "panel" },
-        [
-          _c(
-            "form",
-            {
-              staticClass: "form",
+    ? _c("div", { staticClass: "panel" }, [
+        _c(
+          "form",
+          {
+            staticClass: "form",
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                return _vm.route($event)
+              }
+            }
+          },
+          [
+            _c("label", { attrs: { for: "departure" } }, [_vm._v("出発地")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.routeForm.departure,
+                  expression: "routeForm.departure"
+                }
+              ],
+              staticClass: "form__item",
+              attrs: { type: "text", id: "departure" },
+              domProps: { value: _vm.routeForm.departure },
               on: {
-                submit: function($event) {
-                  $event.preventDefault()
-                  return _vm.route($event)
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.routeForm, "departure", $event.target.value)
                 }
               }
-            },
-            [
-              _c("label", { attrs: { for: "departure" } }, [_vm._v("出発地")]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.routeForm.departure,
-                    expression: "routeForm.departure"
-                  }
-                ],
-                staticClass: "form__item",
-                attrs: { type: "text", id: "departure" },
-                domProps: { value: _vm.routeForm.departure },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.routeForm, "departure", $event.target.value)
-                  }
+            }),
+            _vm._v(" "),
+            _c("label", { attrs: { for: "arrival" } }, [_vm._v("到着地")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.routeForm.arrival,
+                  expression: "routeForm.arrival"
                 }
-              }),
-              _vm._v(" "),
-              _c("label", { attrs: { for: "arrival" } }, [_vm._v("到着地")]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.routeForm.arrival,
-                    expression: "routeForm.arrival"
+              ],
+              staticClass: "form__item",
+              attrs: { type: "text", id: "arrival" },
+              domProps: { value: _vm.routeForm.arrival },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
                   }
-                ],
-                staticClass: "form__item",
-                attrs: { type: "text", id: "arrival" },
-                domProps: { value: _vm.routeForm.arrival },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.routeForm, "arrival", $event.target.value)
-                  }
+                  _vm.$set(_vm.routeForm, "arrival", $event.target.value)
                 }
-              }),
-              _vm._v(" "),
-              _vm._m(0)
-            ]
-          ),
-          _vm._v(" "),
-          _c("Googlemap")
-        ],
-        1
-      )
+              }
+            }),
+            _vm._v(" "),
+            _vm._m(0)
+          ]
+        ),
+        _vm._v(" "),
+        _vm.isCheck
+          ? _c(
+              "div",
+              [
+                _vm._v("\n    " + _vm._s(_vm.arrival) + "\n    "),
+                _c("br"),
+                _vm._v("\n    " + _vm._s(_vm.departure) + "\n    "),
+                _c("br"),
+                _vm._v(" "),
+                _c("Googlemap")
+              ],
+              1
+            )
+          : _vm._e()
+      ])
     : _vm._e()
 }
 var staticRenderFns = [
@@ -20586,6 +20627,72 @@ var actions = {
 
 /***/ }),
 
+/***/ "./resources/js/store/file.js":
+/*!************************************!*\
+  !*** ./resources/js/store/file.js ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+var state = {
+  arrival: null,
+  departure: null
+};
+var getters = {
+  // arrival(state) {
+  // 	return state.arrival;
+  // },
+  checkA: function checkA(state) {
+    return !!state.arrival;
+  },
+  checkD: function checkD(state) {
+    return !!state.departure;
+  },
+  arrival: function arrival(state) {
+    return state.arrival ? state.arrival : '';
+  },
+  departure: function departure(state) {
+    return state.departure ? state.departure : '';
+  }
+};
+var mutations = {
+  setPlace: function setPlace(state, data) {
+    state.arrival = data.arrival;
+    state.departure = data.departure;
+  }
+};
+var actions = {
+  register: function register(context, data) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function register$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            // const response = await axios.post('/api/register', data)
+            context.commit('setPlace', data);
+
+          case 1:
+          case "end":
+            return _context.stop();
+        }
+      }
+    });
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = ({
+  namespaced: true,
+  state: state,
+  getters: getters,
+  mutations: mutations,
+  actions: actions
+});
+
+/***/ }),
+
 /***/ "./resources/js/store/index.js":
 /*!*************************************!*\
   !*** ./resources/js/store/index.js ***!
@@ -20599,13 +20706,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./auth */ "./resources/js/store/auth.js");
+/* harmony import */ var _file__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./file */ "./resources/js/store/file.js");
+
 
 
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
 var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   modules: {
-    auth: _auth__WEBPACK_IMPORTED_MODULE_2__["default"]
+    auth: _auth__WEBPACK_IMPORTED_MODULE_2__["default"],
+    file: _file__WEBPACK_IMPORTED_MODULE_3__["default"]
   }
 });
 /* harmony default export */ __webpack_exports__["default"] = (store);
