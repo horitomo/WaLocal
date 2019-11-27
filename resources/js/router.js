@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 // ページコンポーネントをインポートする
 import RouteRegist from './pages/RouteRegist.vue'
 import Login from './pages/Login.vue'
+import List from './pages/RouteSelect.vue'
 
 import store from './store'
 
@@ -27,6 +28,10 @@ const routes = [
 				next()
 			}
 		}
+	},
+	{
+		path:'/list',
+		component: List
 	}
 ]
 
