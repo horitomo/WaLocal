@@ -1787,85 +1787,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Googlemap.vue?vue&type=script&lang=js&":
-/*!********************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Googlemap.vue?vue&type=script&lang=js& ***!
-  \********************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-//
-//
-//
-var GOOGLEMAP_API_KEY = "aaa";
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: "GoogleMap",
-  data: function data() {
-    return {
-      map: null,
-      mapPosition: {
-        lat: 35.658034,
-        lng: 139.701636
-      }
-    };
-  },
-  methods: {
-    loadJS: function loadJS(src) {
-      var ref = window.document.getElementsByTagName("script")[0];
-      var script = window.document.createElement("script");
-      script.src = src;
-      script.async = true;
-      script.setAttribute('id', 'google-map');
-      ref.parentNode.insertBefore(script, ref);
-    },
-    initMap: function initMap() {
-      this.map = new google.maps.Map(document.getElementById('map'), {
-        center: this.mapPosition,
-        zoom: 11
-      });
-      var d = new google.maps.DirectionsService(); // ルート検索オブジェクト
-
-      var r = new google.maps.DirectionsRenderer({
-        // ルート描画オブジェクト
-        map: this.map,
-        // 描画先の地図
-        preserveViewport: true // 描画後に中心点をずらさない
-
-      });
-      var request = {
-        //origin: new google.maps.LatLng(35.681382,139.766084), // 出発地
-        //origin: this.data.routeForm.arrival,
-        origin: this.$store.getters['file/arrival'],
-        //destination: this.mapPosition, // 目的地
-        destination: this.$store.getters['file/departure'],
-        //        waypoints:wayPoints,
-        travelMode: google.maps.DirectionsTravelMode.WALKING // 交通手段(歩行。DRIVINGの場合は車)
-
-      }; // ルート検索
-
-      d.route(request, function (result, status) {
-        // OKの場合ルート描画
-        if (status == google.maps.DirectionsStatus.OK) {
-          r.setDirections(result);
-        }
-      });
-    }
-  },
-  mounted: function mounted() {
-    this.loadJS("https://maps.googleapis.com/maps/api/js?key=".concat(GOOGLEMAP_API_KEY, "&callback=initMap"));
-    window.initMap = this.initMap;
-  },
-  destroyed: function destroyed() {
-    var oldTag = document.getElementById('google-map');
-    oldTag.parentNode.removeChild(oldTag);
-    window.google = {};
-  }
-});
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Navbar.vue?vue&type=script&lang=js&":
 /*!*****************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Navbar.vue?vue&type=script&lang=js& ***!
@@ -1900,6 +1821,57 @@ __webpack_require__.r(__webpack_exports__);
     },
     username: function username() {
       return this.$store.getters['auth/username'];
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/StoreList.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/StoreList.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    item: {
+      type: Object,
+      required: true
+    }
+  },
+  methods: {
+    go: function go() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function go$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              console.log(this.item.storeName);
+              console.log(this.$store.getters['file/departurePosition']);
+              console.log(this.$store.getters['file/arrivalPosition']);
+
+            case 3:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, null, this);
     }
   }
 });
@@ -2028,7 +2000,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_Googlemap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Googlemap */ "./resources/js/components/Googlemap.vue");
 
 //
 //
@@ -2043,14 +2014,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2063,19 +2026,6 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     isLogin: function isLogin() {
       return this.$store.getters['auth/check'];
-    },
-    arrival: function arrival() {
-      return this.$store.getters['file/arrival'];
-    },
-    departure: function departure() {
-      return this.$store.getters['file/departure'];
-    },
-    isCheck: function isCheck() {
-      if (this.$store.getters['file/checkA'] && this.$store.getters['file/checkD']) {
-        return true;
-      } else {
-        return false;
-      }
     }
   },
   methods: {
@@ -2088,15 +2038,171 @@ __webpack_require__.r(__webpack_exports__);
               return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(this.$store.dispatch('file/register', this.routeForm));
 
             case 2:
+              // トップページに移動する
+              if (this.$store.getters['file/departure'] && this.$store.getters['file/arrival']) {
+                this.$router.push('/list');
+              }
+
+            case 3:
             case "end":
               return _context.stop();
           }
         }
       }, null, this);
     }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/RouteSelect.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/RouteSelect.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_StoreList_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/StoreList.vue */ "./resources/js/components/StoreList.vue");
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var GOOGLEMAP_API_KEY = "AIzaSyCp2N1K1yI7WBTu7_m6H50ISZiHpI5L-_k";
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "GoogleMap",
+  data: function data() {
+    return {
+      map: null,
+      mapPosition: {
+        lat: 35.658034,
+        lng: 139.701636
+      },
+      departureS: this.$store.getters['file/departure'],
+      arrivalS: this.$store.getters['file/arrival'],
+      departurePosition: {
+        lat: '',
+        lng: ''
+      },
+      arrivalPosition: {
+        lat: '',
+        lng: ''
+      },
+      places: []
+    };
+  },
+  methods: {
+    isList: function isList() {
+      this.loadJS("https://maps.googleapis.com/maps/api/js?key=".concat(GOOGLEMAP_API_KEY, "&callback=initMap"));
+      var self = this;
+      window.initMap = self.initMap;
+      this.places[0] = {
+        "storeName": "一陽来福",
+        "address": "東京都八王子市楢原町472-1",
+        "lat": 35.6806528,
+        "lng": 139.30740349999996
+      };
+      this.places[1] = {
+        "storeName": "一陽来福",
+        "address": "東京都八王子市楢原町472-1",
+        "lat": 35.6806528,
+        "lng": 139.30740349999996
+      };
+    },
+    loadJS: function loadJS(src) {
+      var ref = window.document.getElementsByTagName("script")[0];
+      var script = window.document.createElement("script");
+      script.src = src;
+      script.async = true;
+      script.setAttribute('id', 'google-map');
+      ref.parentNode.insertBefore(script, ref);
+    },
+    initMap: function initMap() {
+      var _this = this;
+
+      var self = this;
+      var geocoderFrom = new google.maps.Geocoder();
+      var geocoderTo = new google.maps.Geocoder();
+      var from = this.departureS;
+      var to = this.arrivalS;
+      var depP = {
+        "lat": 0.1,
+        "lng": 0.1
+      };
+      var arriP = {
+        "lat": 0.1,
+        "lng": 0.1
+      };
+      geocoderFrom.geocode({
+        address: from
+      }, function (results, status) {
+        if (status === 'OK' && results[0]) {
+          //status を確認して処理開始
+          depP.lat = results[0].geometry.location.lat();
+          self.departurePosition.lat = results[0].geometry.location.lat();
+          depP.lng = results[0].geometry.location.lng();
+          self.departurePosition.lng = results[0].geometry.location.lng();
+        }
+      });
+      geocoderTo.geocode({
+        address: to
+      }, function (resultt, status) {
+        if (status === 'OK' && resultt[0]) {
+          //status を確認して処理開始
+          arriP.lat = resultt[0].geometry.location.lat();
+          arriP.lng = resultt[0].geometry.location.lng();
+        }
+      });
+      setTimeout(function () {
+        return _this.$store.dispatch('file/registerDPosition', depP);
+      }, 500);
+      setTimeout(function () {
+        return _this.$store.dispatch('file/registerAPosition', arriP);
+      }, 500); //console.log(depP)
+      //document.myform.submit()
+    }
+  },
+  mounted: function mounted() {//this.$store.dispatch('file/registerDPosition', this.departurePosition)
+  },
+  destroyed: function destroyed() {
+    var oldTag = document.getElementById('google-map');
+    oldTag.parentNode.removeChild(oldTag);
+    window.google = {};
   },
   components: {
-    Googlemap: _components_Googlemap__WEBPACK_IMPORTED_MODULE_1__["default"]
+    StoreList: _components_StoreList_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  watch: {
+    $route: {
+      handler: function handler() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function handler$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(this.isList());
+
+              case 2:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, null, this);
+      },
+      immediate: true
+    }
   }
 });
 
@@ -3406,30 +3512,6 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Googlemap.vue?vue&type=template&id=0dc42128&":
-/*!************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Googlemap.vue?vue&type=template&id=0dc42128& ***!
-  \************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "map" } })
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Navbar.vue?vue&type=template&id=6dde423b&":
 /*!*********************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Navbar.vue?vue&type=template&id=6dde423b& ***!
@@ -3477,6 +3559,49 @@ var render = function() {
     ],
     1
   )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/StoreList.vue?vue&type=template&id=0bfa7078&":
+/*!************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/StoreList.vue?vue&type=template&id=0bfa7078& ***!
+  \************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "panel" }, [
+    _c(
+      "form",
+      {
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.go($event)
+          }
+        }
+      },
+      [
+        _c("p", [_vm._v("店名：" + _vm._s(this.item.storeName))]),
+        _vm._v(" "),
+        _c("p", [_vm._v("住所：" + _vm._s(this.item.address))]),
+        _vm._v(" "),
+        _c("button", [_vm._v("選択")])
+      ]
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -3857,22 +3982,7 @@ var render = function() {
             _vm._v(" "),
             _vm._m(0)
           ]
-        ),
-        _vm._v(" "),
-        _vm.isCheck
-          ? _c(
-              "div",
-              [
-                _vm._v("\n    " + _vm._s(_vm.arrival) + "\n    "),
-                _c("br"),
-                _vm._v("\n    " + _vm._s(_vm.departure) + "\n    "),
-                _c("br"),
-                _vm._v(" "),
-                _c("Googlemap")
-              ],
-              1
-            )
-          : _vm._e()
+        )
       ])
     : _vm._e()
 }
@@ -3890,6 +4000,42 @@ var staticRenderFns = [
     ])
   }
 ]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/RouteSelect.vue?vue&type=template&id=213ce72c&":
+/*!*********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/RouteSelect.vue?vue&type=template&id=213ce72c& ***!
+  \*********************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("p", [_vm._v("出発地：" + _vm._s(this.departureS))]),
+      _vm._v(" "),
+      _c("p", [_vm._v("到着地：" + _vm._s(this.arrivalS))]),
+      _vm._v(" "),
+      _vm._l(_vm.places, function(place) {
+        return _c("StoreList", { key: place.id, attrs: { item: place } })
+      })
+    ],
+    2
+  )
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -20180,75 +20326,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/Googlemap.vue":
-/*!***********************************************!*\
-  !*** ./resources/js/components/Googlemap.vue ***!
-  \***********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Googlemap_vue_vue_type_template_id_0dc42128___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Googlemap.vue?vue&type=template&id=0dc42128& */ "./resources/js/components/Googlemap.vue?vue&type=template&id=0dc42128&");
-/* harmony import */ var _Googlemap_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Googlemap.vue?vue&type=script&lang=js& */ "./resources/js/components/Googlemap.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _Googlemap_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Googlemap_vue_vue_type_template_id_0dc42128___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Googlemap_vue_vue_type_template_id_0dc42128___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/Googlemap.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/Googlemap.vue?vue&type=script&lang=js&":
-/*!************************************************************************!*\
-  !*** ./resources/js/components/Googlemap.vue?vue&type=script&lang=js& ***!
-  \************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Googlemap_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Googlemap.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Googlemap.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Googlemap_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/Googlemap.vue?vue&type=template&id=0dc42128&":
-/*!******************************************************************************!*\
-  !*** ./resources/js/components/Googlemap.vue?vue&type=template&id=0dc42128& ***!
-  \******************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Googlemap_vue_vue_type_template_id_0dc42128___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Googlemap.vue?vue&type=template&id=0dc42128& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Googlemap.vue?vue&type=template&id=0dc42128&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Googlemap_vue_vue_type_template_id_0dc42128___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Googlemap_vue_vue_type_template_id_0dc42128___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
 /***/ "./resources/js/components/Navbar.vue":
 /*!********************************************!*\
   !*** ./resources/js/components/Navbar.vue ***!
@@ -20313,6 +20390,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Navbar_vue_vue_type_template_id_6dde423b___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Navbar_vue_vue_type_template_id_6dde423b___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/StoreList.vue":
+/*!***********************************************!*\
+  !*** ./resources/js/components/StoreList.vue ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _StoreList_vue_vue_type_template_id_0bfa7078___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./StoreList.vue?vue&type=template&id=0bfa7078& */ "./resources/js/components/StoreList.vue?vue&type=template&id=0bfa7078&");
+/* harmony import */ var _StoreList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./StoreList.vue?vue&type=script&lang=js& */ "./resources/js/components/StoreList.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _StoreList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _StoreList_vue_vue_type_template_id_0bfa7078___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _StoreList_vue_vue_type_template_id_0bfa7078___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/StoreList.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/StoreList.vue?vue&type=script&lang=js&":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/StoreList.vue?vue&type=script&lang=js& ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./StoreList.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/StoreList.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/StoreList.vue?vue&type=template&id=0bfa7078&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/StoreList.vue?vue&type=template&id=0bfa7078& ***!
+  \******************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreList_vue_vue_type_template_id_0bfa7078___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./StoreList.vue?vue&type=template&id=0bfa7078& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/StoreList.vue?vue&type=template&id=0bfa7078&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreList_vue_vue_type_template_id_0bfa7078___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreList_vue_vue_type_template_id_0bfa7078___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -20456,6 +20602,76 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/pages/RouteSelect.vue":
+/*!********************************************!*\
+  !*** ./resources/js/pages/RouteSelect.vue ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _RouteSelect_vue_vue_type_template_id_213ce72c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RouteSelect.vue?vue&type=template&id=213ce72c& */ "./resources/js/pages/RouteSelect.vue?vue&type=template&id=213ce72c&");
+/* harmony import */ var _RouteSelect_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RouteSelect.vue?vue&type=script&lang=js& */ "./resources/js/pages/RouteSelect.vue?vue&type=script&lang=js&");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _RouteSelect_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _RouteSelect_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _RouteSelect_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _RouteSelect_vue_vue_type_template_id_213ce72c___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _RouteSelect_vue_vue_type_template_id_213ce72c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/pages/RouteSelect.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/pages/RouteSelect.vue?vue&type=script&lang=js&":
+/*!*********************************************************************!*\
+  !*** ./resources/js/pages/RouteSelect.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_RouteSelect_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./RouteSelect.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/RouteSelect.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_RouteSelect_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/pages/RouteSelect.vue?vue&type=template&id=213ce72c&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/pages/RouteSelect.vue?vue&type=template&id=213ce72c& ***!
+  \***************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RouteSelect_vue_vue_type_template_id_213ce72c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./RouteSelect.vue?vue&type=template&id=213ce72c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/RouteSelect.vue?vue&type=template&id=213ce72c&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RouteSelect_vue_vue_type_template_id_213ce72c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RouteSelect_vue_vue_type_template_id_213ce72c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/router.js":
 /*!********************************!*\
   !*** ./resources/js/router.js ***!
@@ -20470,9 +20686,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _pages_RouteRegist_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pages/RouteRegist.vue */ "./resources/js/pages/RouteRegist.vue");
 /* harmony import */ var _pages_Login_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pages/Login.vue */ "./resources/js/pages/Login.vue");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./store */ "./resources/js/store/index.js");
+/* harmony import */ var _pages_RouteSelect_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pages/RouteSelect.vue */ "./resources/js/pages/RouteSelect.vue");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./store */ "./resources/js/store/index.js");
 
  // ページコンポーネントをインポートする
+
 
 
 
@@ -20488,12 +20706,15 @@ var routes = [{
   path: '/login',
   component: _pages_Login_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
   beforeEnter: function beforeEnter(to, from, next) {
-    if (_store__WEBPACK_IMPORTED_MODULE_4__["default"].getters['auth/check']) {
+    if (_store__WEBPACK_IMPORTED_MODULE_5__["default"].getters['auth/check']) {
       next('/');
     } else {
       next();
     }
   }
+}, {
+  path: '/list',
+  component: _pages_RouteSelect_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
 }]; // VueRouterインスタンスを作成する
 
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
@@ -20641,7 +20862,15 @@ __webpack_require__.r(__webpack_exports__);
 
 var state = {
   arrival: null,
-  departure: null
+  departure: null,
+  departurePosition: {
+    lat: null,
+    lng: null
+  },
+  arrivalPosition: {
+    lat: null,
+    lng: null
+  }
 };
 var getters = {
   // arrival(state) {
@@ -20658,12 +20887,26 @@ var getters = {
   },
   departure: function departure(state) {
     return state.departure ? state.departure : '';
+  },
+  arrivalPosition: function arrivalPosition(state) {
+    return state.arrivalPosition ? state.arrivalPosition : '';
+  },
+  departurePosition: function departurePosition(state) {
+    return state.departurePosition ? state.departurePosition : '';
   }
 };
 var mutations = {
   setPlace: function setPlace(state, data) {
     state.arrival = data.arrival;
     state.departure = data.departure;
+  },
+  setDPosition: function setDPosition(state, data) {
+    state.departurePosition.lat = data.lat;
+    state.departurePosition.lng = data.lng;
+  },
+  setAPosition: function setAPosition(state, data) {
+    state.arrivalPosition.lat = data.lat;
+    state.arrivalPosition.lng = data.lng;
   }
 };
 var actions = {
@@ -20678,6 +20921,25 @@ var actions = {
           case 1:
           case "end":
             return _context.stop();
+        }
+      }
+    });
+  },
+  registerDPosition: function registerDPosition(context, data) {
+    // const response = await axios.post('/api/register', data)
+    context.commit('setDPosition', data);
+  },
+  registerAPosition: function registerAPosition(context, data) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function registerAPosition$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            // const response = await axios.post('/api/register', data)
+            context.commit('setAPosition', data);
+
+          case 1:
+          case "end":
+            return _context2.stop();
         }
       }
     });
