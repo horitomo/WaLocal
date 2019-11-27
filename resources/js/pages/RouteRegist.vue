@@ -9,17 +9,9 @@
         <button type="submit" class="button button--inverse">検索</button>
       </div>
     </form>
-    <div v-if="isCheck">
-      {{ arrival }}
-      <br>
-      {{ departure }}
-      <br>
-      <Googlemap />
-    </div>
   </div>
 </template>
 <script>
-import Googlemap from '../components/Googlemap'
 export default {
   data() {
     return {
@@ -32,33 +24,18 @@ export default {
   computed: {
 		isLogin () {
 			return this.$store.getters['auth/check']
-    },
-    arrival () {
-      return this.$store.getters['file/arrival']
-    },
-    departure() {
-            return this.$store.getters['file/departure']
-    },
-    isCheck(){
-      if(this.$store.getters['file/checkA'] && this.$store.getters['file/checkD'] ){
-          return true
-      }else {
-        return false
-      }
     }
 	},
   methods :{
     async route(){
       //console.log(this.routeForm)
       // authストアのresigterアクションを呼び出す
-			await this.$store.dispatch('file/register', this.routeForm)
-
-			// トップページに移動する
-			//this.$router.push('/')
+      await this.$store.dispatch('file/register', this.routeForm)
+      // トップページに移動する
+      if(this.$store.getters['file/departure'] && this.$store.getters['file/arrival']){
+        this.$router.push('/list')
+      }
     }
-  },
-  components:{
-    Googlemap
   }
 }
 </script>
