@@ -10,18 +10,17 @@
 
 <script>
 export default {
-  props: {
-    item: {
-      type: Object,
-      required: true
-    }
-  },
-  methods:{
-	  async go(){
-		  console.log(this.item.storeName)
-		  console.log(this.$store.getters['file/departurePosition'])
-		  console.log(this.$store.getters['file/arrivalPosition'])
-	  }
-  }
+	props: {
+		item: {
+			type: Object,
+			required: true
+		}
+	},
+	methods:{
+		async go(){
+			await this.$store.dispatch('file/storeLatLng',this.item);
+			this.$router.push('/route')
+		}
+	}
 }
 </script>
