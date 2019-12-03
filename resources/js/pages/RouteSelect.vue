@@ -37,7 +37,7 @@ export default {
       let self = this
       window.initMap = self.initMap
       this.places[0] = {"storeName":"一陽来福","address":"東京都八王子市楢原町472-1","lat":35.6806528,"lng":139.30740349999996}
-      this.places[1] = {"storeName":"一陽来福","address":"東京都八王子市楢原町472-1","lat":35.6806528,"lng":139.30740349999996}
+      this.places[1] = {"storeName":"みんみんラーメン　本店","address":"東京都八王子市楢原町437-1","lat":35.6806528,"lng":139.30740349999996}
     },
     loadJS(src) {
       const ref = window.document.getElementsByTagName("script")[0];
