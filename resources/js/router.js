@@ -5,6 +5,7 @@ import VueRouter from 'vue-router'
 import RouteRegist from './pages/RouteRegist.vue'
 import Login from './pages/Login.vue'
 import List from './pages/RouteSelect.vue'
+import Route from './pages/Route.vue'
 
 import store from './store'
 
@@ -32,6 +33,10 @@ const routes = [
 	{
 		path:'/list',
 		component: List
+	},
+	{
+		path:'/route',
+		component:Route
 	}
 ]
 
