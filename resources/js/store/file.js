@@ -8,7 +8,10 @@ const state = {
 	arrivalPosition:{
 		lat: null,
 		lng: null
-	}
+	},
+	lat: null,
+	lng: null,
+	address: null
 }
 
 const getters = {
@@ -20,8 +23,10 @@ const getters = {
 	arrival: state => state.arrival ? state.arrival : '',
 	departure: state => state.departure ? state.departure : '',
 	arrivalPosition: state => state.arrivalPosition ? state.arrivalPosition : '',
-	departurePosition: state => state.departurePosition ? state.departurePosition : ''
-
+	departurePosition: state => state.departurePosition ? state.departurePosition : '',
+	lat: state => state.lat ? state.lat : '',
+	lng: state => state.lng ? state.lng : '',
+	address: state => state.address ? state.address : ''
 }
 
 const mutations = {
@@ -36,21 +41,26 @@ const mutations = {
 	setAPosition (state, data) {
 		state.arrivalPosition.lat = data.lat
 		state.arrivalPosition.lng = data.lng
+	},
+	setStoreLatLng (state, data) {
+		state.lat = data.lat
+		state.lng = data.lng
+		state.address = data.address
 	}
 }
 
 const actions = {
-	async register (context, data) {
-		// const response = await axios.post('/api/register', data)
+	register (context, data) {
 		context.commit('setPlace', data)
 	},
 	registerDPosition (context, data) {
-		// const response = await axios.post('/api/register', data)
 		context.commit('setDPosition', data)
 	},
-	async registerAPosition (context, data) {
-		// const response = await axios.post('/api/register', data)
+	registerAPosition (context, data) {
 		context.commit('setAPosition', data)
+	},
+	storeLatLng (context, data) {
+		context.commit('setStoreLatLng', data)
 	}
 }
 
