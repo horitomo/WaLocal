@@ -22,6 +22,9 @@ Route::post('/login', 'Auth\LoginController@login')->name('login');
 // ログアウト
 Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
+// 会員登録
+Route::post('/route', 'RouteController@create')->name('route');
+
 // ログインユーザー
 Route::get('/user', function () {
 	return Auth::user();
