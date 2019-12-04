@@ -72,9 +72,6 @@ export default {
       });
       setTimeout(() => this.$store.dispatch('file/registerDPosition', depP), 500);
       setTimeout(() => this.$store.dispatch('file/registerAPosition', arriP), 500);
-
-      //console.log(depP)
-	//document.myform.submit()
 	  },
   },
   mounted : function(){
