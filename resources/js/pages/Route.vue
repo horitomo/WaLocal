@@ -1,6 +1,6 @@
 <template>
 	<div class="panel">
-		<Googlemap />
+		<Googlemap2 />
 		<form @submit.prevent="prev">
 			<button>戻る</button>
 		</form>
@@ -8,7 +8,7 @@
 </template>
 
 <script>
-	import Googlemap from '../components/Googlemap'
+	import Googlemap2 from '../components/Googlemap2'
 	export default {
 		methods: {
 			prev(){
@@ -16,7 +16,7 @@
 			}
 		},
 		components:{
-			Googlemap
+			Googlemap2
 		}
 	}
 </script>
