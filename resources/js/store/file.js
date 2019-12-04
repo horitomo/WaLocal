@@ -61,6 +61,9 @@ const actions = {
 	},
 	storeLatLng (context, data) {
 		context.commit('setStoreLatLng', data)
+	},
+	route (context, data) {
+		const response = axios.post('/api/route', data)
 	}
 }
 
