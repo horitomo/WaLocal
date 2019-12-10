@@ -1,7 +1,7 @@
 <template>
 	<nav class="navbar">
 		<RouterLink class="navbar__brand" to="/">
-			Walocal
+			Route
 		</RouterLink>
 		<div class="navbar__menu">
 			<span v-if="isLogin" class="navbar__item">
