@@ -18,6 +18,8 @@ class CreateRouteTable extends Migration
             $table->string('departureAddress');
             $table->string('arrivalAddress');
             $table->string('wayPoint');
+            $table->double('lat',20,14);
+            $table->double('lng',20,14);
             $table->timestamps();
         });
     }
