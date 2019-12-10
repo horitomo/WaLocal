@@ -2,10 +2,14 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 // ページコンポーネントをインポートする
+import First from './pages/First'
 import RouteRegist from './pages/RouteRegist.vue'
 import Login from './pages/Login.vue'
 import List from './pages/RouteSelect.vue'
 import Route from './pages/Route.vue'
+import Search from './pages/Search.vue'
+import ListStore from './pages/ListStore'
+import ResultRoute from './pages/ResultRoute'
 
 import store from './store'
 
@@ -16,7 +20,18 @@ Vue.use(VueRouter)
 // パスとコンポーネントのマッピング
 const routes = [
 	{
-		path: '/',
+		path:'/',
+		component: First,
+		beforeEnter (to, from, next) {
+			if (!store.getters['auth/check']) {
+				next('/login')
+			} else {
+				next()
+			}
+		}
+	},
+	{
+		path: '/register',
 		component: RouteRegist
 	},
 	{
@@ -37,6 +52,18 @@ const routes = [
 	{
 		path:'/route',
 		component:Route
+	},
+	{
+		path: '/search',
+		component:Search
+	},
+	{
+		path:'/listStore',
+		component:ListStore
+	},
+	{
+		path:'/result',
+		component:ResultRoute
 	}
 ]
 
