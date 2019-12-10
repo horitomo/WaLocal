@@ -24,6 +24,8 @@ Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
 // 会員登録
 Route::post('/route', 'RouteController@create')->name('route.create');
+// 写真一覧
+Route::get('/route', 'RouteController@index')->name('route.index');
 
 // ログインユーザー
 Route::get('/user', function () {
