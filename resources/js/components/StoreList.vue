@@ -2,7 +2,7 @@
 	<div class="panel">
 		<form @submit.prevent="go">
 			<p>店名：{{ this.item.storeName }}</p>
-			<p>住所：{{ this.item.address }}</p>
+			<p>住所：{{ this.item.storeAddress }}</p>
 			<button>選択</button>
 		</form>
 	</div>
