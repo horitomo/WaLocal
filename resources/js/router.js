@@ -10,6 +10,7 @@ import Route from './pages/Route.vue'
 import Search from './pages/Search.vue'
 import ListStore from './pages/ListStore'
 import ResultRoute from './pages/ResultRoute'
+import Store from './pages/Store'
 
 import store from './store'
 
@@ -64,6 +65,10 @@ const routes = [
 	{
 		path:'/result',
 		component:ResultRoute
+	},
+	{
+		path:'/store/register',
+		component:Store
 	}
 ]
 
