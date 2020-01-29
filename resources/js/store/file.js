@@ -45,7 +45,7 @@ const mutations = {
 	setStoreLatLng (state, data) {
 		state.lat = data.lat
 		state.lng = data.lng
-		state.address = data.address
+		state.address = data.storeAddress
 	}
 }
 
