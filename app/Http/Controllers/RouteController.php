@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Route;
+//use App\Route;
 
 class RouteController extends Controller
 {
@@ -24,9 +24,19 @@ class RouteController extends Controller
 
     public function index(Request $request)
     {
-        $departureAddress = $request->input("departureAddress");
-        $arrivalAddress = $request->input("arrivalAddress");
+        $departureB = $request->input("departure");
+        $arrivalB = $request->input("arrival");
         $routes = DB::select('select * from route where departureAddress = ?',["東京都八王子市上壱分方町３５３−１１５"]);
+        //$routes = DB::table('route')->get();
+        $routes[0]->wayPoint = $departureB;
+        return $routes;
+    }
+
+    public function example(Request $request)
+    {
+        $departureB = $request->input("departure");
+        $arrivalB = $request->input("arrival");
+        $routes = DB::select('select * from route where departureAddress = ?',[$departureB]);
         //$routes = DB::table('route')->get();
         return $routes;
     }
