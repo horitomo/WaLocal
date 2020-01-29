@@ -16,9 +16,7 @@ export default {
 	},
 	methods:{
 		async mapGo(){
-			this.item.lat = 35.6806528
-			this.item.lng = 139.30740349999996
-			this.item.address = this.item.wayPoint
+			this.item.storeAddress = this.item.wayPoint
 			await this.$store.dispatch('file/storeLatLng',this.item);
 			this.$router.push('/result')
 		}
