@@ -36,7 +36,7 @@ class RouteController extends Controller
     {
         $departureB = $request->input("departure");
         $arrivalB = $request->input("arrival");
-        $routes = DB::select('select * from route where departureAddress = ?',[$departureB]);
+        $routes = DB::select('select * from route where departureAddress = ? AND arrivalAddress = ?',[$departureB,$arrivalB]);
         //$routes = DB::table('route')->get();
         return $routes;
     }
