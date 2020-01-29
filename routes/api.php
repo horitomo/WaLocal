@@ -22,10 +22,17 @@ Route::post('/login', 'Auth\LoginController@login')->name('login');
 // ログアウト
 Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
-// 会員登録
+// ルート登録
 Route::post('/route', 'RouteController@create')->name('route.create');
-// 写真一覧
+// ルート一覧
+Route::post('/route/example', 'RouteController@example')->name('route.example');
+// ルート一覧
 Route::get('/route', 'RouteController@index')->name('route.index');
+
+// ストア登録
+Route::post('/store', 'StoreController@create')->name('store.create');
+// ストア一覧
+Route::post('/store/list', 'StoreController@list')->name('store.list');
 
 // ログインユーザー
 Route::get('/user', function () {
