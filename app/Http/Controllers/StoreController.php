@@ -11,10 +11,11 @@ class StoreController extends Controller
         $storeName = $request->input("storeName");
         $storeAddress = $request->input("storeAddress");
         $storeCategory = $request->input("storeCategory");
+        $comment = $request->input("comment");
         $lat = (double)$request->input("lat");
         $lng = (double)$request->input("lng");
         DB::table('store')->insert(
-            ['storeName' => $storeName, 'storeAddress' => $storeAddress, 'storeCategory' => $storeCategory, 'lat' => $lat, 'lng' => $lng]
+            ['storeName' => $storeName, 'storeAddress' => $storeAddress, 'comment'=> $comment, 'storeCategory' => $storeCategory, 'lat' => $lat, 'lng' => $lng]
         );
     }
 
