@@ -5,6 +5,8 @@
 			<input type="text" name="storeName" id="" v-model="storeRegisterForm.storeName">
 			<label for="">住所：</label>
 			<input type="text" name="storeAddress" id="" v-model="storeRegisterForm.storeAddress">
+			<label for="">コメント：</label>
+			<textarea name="comment" rows="4" cols="40" v-model="storeRegisterForm.comment">ここに感想を記入してください。</textarea><br>
 			<label for="">ジャンル：</label>
 			<select name="storeCategory" id="" v-model="storeRegisterForm.storeCategory">
 				<option disabled value="">ジャンルを決定してください</option>
@@ -27,6 +29,7 @@ export default {
 				storeName : '',
 				storeAddress : '',
 				storeCategory : '',
+				comment:'',
 				lat : '',
 				lng : ''
 			}
