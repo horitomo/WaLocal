@@ -18,6 +18,7 @@ class CreateStoreTable extends Migration
             $table->string('storeName');
             $table->string('storeAddress');
             $table->char('storeCategory',2);
+            $table->string('comment');
             $table->double('lat',20,14);
             $table->double('lng',20,14);
             $table->timestamps();
