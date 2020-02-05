@@ -11,6 +11,7 @@ import Search from './pages/Search.vue'
 import ListStore from './pages/ListStore'
 import ResultRoute from './pages/ResultRoute'
 import Store from './pages/Store'
+import RegisterTop from './pages/RegisterTop'
 
 import store from './store'
 
@@ -69,6 +70,10 @@ const routes = [
 	{
 		path:'/store/register',
 		component:Store
+	},
+	{
+		path:'/registertop',
+		component:RegisterTop
 	}
 ]
 
