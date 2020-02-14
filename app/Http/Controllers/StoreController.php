@@ -11,6 +11,7 @@ class StoreController extends Controller
         $storeName = $request->input("storeName");
         $storeAddress = $request->input("storeAddress");
         $storeCategory = $request->input("storeCategory");
+        $request->photo->storeAs('public/site_image');
         $comment = $request->input("comment");
         $lat = (double)$request->input("lat");
         $lng = (double)$request->input("lng");

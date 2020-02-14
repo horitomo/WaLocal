@@ -1,5 +1,9 @@
 <template>
-	<div>
+	<div class="backmain">
+		<div class="searchtitlediv">
+			<img src="storage/site_image/search.png" alt="miss" class="searchimage">
+			<h2 class="searchtitle">おすすめのルートを探す</h2>
+		</div>
 		<SearchWindow />
 	</div>
 </template>

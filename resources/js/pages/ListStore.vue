@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="white">
 		<p>出発地：{{ this.routeFormList.departure }}</p>
 		<p>到着地：{{ this.routeFormList.arrival }}</p>
 		<RouteList

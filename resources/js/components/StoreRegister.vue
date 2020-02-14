@@ -15,6 +15,7 @@
 				<option value="03">洋食</option>
 				<option value="04">中華</option>
 			</select>
+			<input type="file" @change="onFileChange">
 			<br />
 			<button>登録</button>
 		</form>
@@ -31,11 +32,21 @@ export default {
 				storeCategory : '',
 				comment:'',
 				lat : '',
-				lng : ''
+				lng : '',
+				photo : null
 			}
 		}
 	},
 	methods : {
+		onFileChange (event) {
+			const reader = new FileReader()
+			reader.onload = e => {
+			this.preview = e.target.result
+			}
+			reader.readAsDataURL(event.target.files[0])
+			this.storeRegisterForm.photo = event.target.files[0]
+			console.log(this.storeRegisterForm.photo)
+		},
 		async storeRegisterStart() {
 			console.log(this.storeRegisterForm)
 			await this.initMap()

@@ -1,13 +1,13 @@
 <template>
-	<div>
+	<div class="searchwindows">
 		<form class="form" @submit.prevent="route">
-			<label for="departure">出発地</label>
-			<input type="text" class="form__item" id="departure"  v-model="routeForm.departure">
-			<label for="arrival">到着地</label>
-			<input type="text" class="form__item" id="arrival"  v-model="routeForm.arrival">
+			<label for="departure" class="marginsame">出発地</label>
+			<input type="text" class="form__item marginsame" id="departure"  v-model="routeForm.departure">
+			<label for="arrival" class="marginsame">到着地</label>
+			<input type="text" class="form__item marginsame" id="arrival"  v-model="routeForm.arrival">
 			<div class="form__button">
-			<button type="submit" class="button button--inverse">検索</button>
-		</div>
+				<button type="submit" class="button button--inverse marginsame">検索</button>
+			</div>
 		</form>
 	</div>
 </template>
